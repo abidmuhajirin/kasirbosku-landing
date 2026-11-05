@@ -1,0 +1,9 @@
+name = "kasirbosku-landing"
+compatibility_date = "2026-10-01"
+
+# Landing page statis untuk kasirbosku.my.id (domain sudah aktif di Cloudflare).
+routes = [{ pattern = "kasirbosku.my.id", custom_domain = true }]
+
+[assets]
+directory = "./public"
+not_found_handling = "single-page-application"
