@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="id">
 <head>
 <meta charset="utf-8">
@@ -284,6 +284,15 @@ section{scroll-margin-top:76px}
 .upl .fi{width:40px;height:40px;border-radius:var(--r-sm);background:var(--ok-50);color:var(--ok);display:grid;place-items:center;flex:none}
 .prog{height:6px;border-radius:99px;background:var(--line);margin-top:8px;overflow:hidden}
 .prog i{display:block;height:100%;width:100%;background:var(--ok);border-radius:99px}
+.scan{display:flex;align-items:center;gap:14px}
+.scan .bc{flex:none;width:96px;height:56px;border-radius:var(--r-sm);background:#fff;border:1px solid var(--line);padding:8px 10px;position:relative;overflow:hidden}
+.scan .bc i{display:block;height:100%;background:repeating-linear-gradient(90deg,var(--ink) 0 2px,transparent 2px 4px,var(--ink) 4px 5px,transparent 5px 8px,var(--ink) 8px 11px,transparent 11px 13px)}
+.scan .bc::after{content:"";position:absolute;left:4px;right:4px;top:50%;height:2px;background:var(--rose);opacity:.85}
+.scan small{display:block;color:var(--muted-2)}
+.scan b{display:block}
+.exp .opt{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.exp .opt span{border:1px solid var(--line-2);border-radius:var(--r-sm);padding:5px 10px;font-size:13px;font-weight:600;color:var(--muted)}
+.exp .opt span.on{background:var(--brand-50);border-color:var(--brand-600);color:var(--brand-700)}
 .swatch{display:flex;gap:8px}
 .swatch span{flex:1;height:40px;border-radius:var(--r-sm)}
 
@@ -497,6 +506,8 @@ section{scroll-margin-top:76px}
     <symbol id="i-wallet" viewBox="0 0 24 24"><path d="M20 7H5a2 2 0 0 1 0-4h13v4"/><path d="M3 5v14a2 2 0 0 0 2 2h15V7"/><path d="M16 14h.01"/></symbol>
     <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 4h11a3 3 0 0 1 3 3v13H7a3 3 0 0 1-3-3z"/><path d="M4 17a3 3 0 0 1 3-3h11M8 8h6"/></symbol>
     <symbol id="i-upload" viewBox="0 0 24 24"><path d="M12 15V4M7 9l5-5 5 5"/><path d="M4 15v4a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4"/></symbol>
+    <symbol id="i-barcode" viewBox="0 0 24 24"><path d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2M7 8v8M10 8v8M13 8v8M17 8v8"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 4v11M7 10l5 5 5-5"/><path d="M4 15v4a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4"/></symbol>
     <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></symbol>
     <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
     <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
@@ -571,7 +582,7 @@ section{scroll-margin-top:76px}
                 <div class="app-top"><b>Kasir</b><div class="chips"><span class="chip warn"><svg class="ico" style="width:1.1em;height:1.1em"><use href="#i-clock"/></svg>Ashar 15.12</span><span class="chip ok"><span class="dot"></span>Tersinkron</span></div></div>
                 <div class="pos">
                   <div class="catalog">
-                    <div class="search">Cari produk…</div>
+                    <div class="search">Cari produk atau scan barcode…</div>
                     <div class="cats"><span class="on">Semua</span><span>Sembako</span><span>Minuman</span><span>Snack</span></div>
                     <div class="grid-p">
                       <div class="prod"><div class="ph"><svg class="ico"><use href="#i-box"/></svg></div><p>Beras 5 kg</p><span class="tab">Rp72.000</span></div>
@@ -657,7 +668,7 @@ section{scroll-margin-top:76px}
     <div class="sec-head rv">
       <p class="kicker">Fitur</p>
       <h2 id="h-fitur">Semua kebutuhan toko dalam satu aplikasi</h2>
-      <p>Bukan cuma mencatat penjualan. KasirBosku juga membantu mengatur karyawan, pelanggan, dan stok produk.</p>
+      <p>Bukan cuma mencatat penjualan. KasirBosku juga membantu mengatur karyawan, pelanggan, dan produk, termasuk scan barcode dan export ke Excel.</p>
     </div>
 
     <div class="feat-grid">
@@ -770,6 +781,41 @@ section{scroll-margin-top:76px}
         <div class="vis upl" aria-hidden="true">
           <span class="fi"><svg class="ico"><use href="#i-file"/></svg></span>
           <div style="flex:1;min-width:0"><b>daftar-produk.xlsx</b><div class="prog"><i></i></div></div>
+        </div>
+      </article>
+
+      <!-- Export produk -->
+      <article class="fc s3 rv">
+        <div>
+          <span class="tag"><svg class="ico" style="width:16px;height:16px"><use href="#i-download"/></svg>Export Produk</span>
+          <h3 style="margin-top:10px">Ekspor daftar produk ke file Excel</h3>
+          <ul>
+            <li><svg class="ico"><use href="#i-check"/></svg>Pilih semua produk atau produk tertentu saja</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Sertakan foto produk, atau datanya saja</li>
+          </ul>
+        </div>
+        <div class="vis upl exp" aria-hidden="true">
+          <span class="fi"><svg class="ico"><use href="#i-file"/></svg></span>
+          <div style="flex:1;min-width:0"><b>produk-toko.xlsx</b>
+            <div class="opt"><span class="on">Semua produk</span><span>Pilih produk</span><span class="on">Dengan foto</span></div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Scan barcode -->
+      <article class="fc s3 rv">
+        <div>
+          <span class="tag"><svg class="ico" style="width:16px;height:16px"><use href="#i-barcode"/></svg>Scan Barcode</span>
+          <h3 style="margin-top:10px">Scan barcode lewat kamera HP atau alat scanner</h3>
+          <ul>
+            <li><svg class="ico"><use href="#i-check"/></svg>Pakai kamera HP, tanpa alat tambahan</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Bisa juga pakai alat scanner barcode</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Produk ketemu tanpa mengetik nama</li>
+          </ul>
+        </div>
+        <div class="vis scan" aria-hidden="true">
+          <span class="bc"><i></i></span>
+          <div><small>Hasil scan</small><b>Kopi Susu Gula Aren</b></div>
         </div>
       </article>
 
@@ -989,6 +1035,8 @@ section{scroll-margin-top:76px}
       <details><summary>Apakah bisa digunakan tanpa internet?<span class="pm" aria-hidden="true"><svg class="ico" style="width:16px;height:16px"><use href="#i-plus"/></svg></span></summary><div class="ans">Bisa. Saat offline, transaksi disimpan sementara di perangkat. Begitu internet tersambung lagi, data dikirim otomatis ke cloud KasirBosku.</div></details>
       <details><summary>Apakah data tersimpan dengan aman?<span class="pm" aria-hidden="true"><svg class="ico" style="width:16px;height:16px"><use href="#i-plus"/></svg></span></summary><div class="ans">Data toko disimpan di cloud server KasirBosku, bukan hanya di satu perangkat. Setiap karyawan masuk dengan akun sendiri, dan Bos menentukan siapa yang boleh membuka data apa.</div></details>
       <details><summary>Apakah bisa digunakan melalui HP?<span class="pm" aria-hidden="true"><svg class="ico" style="width:16px;height:16px"><use href="#i-plus"/></svg></span></summary><div class="ans">Bisa. KasirBosku berjalan di HP, tablet, dan laptop lewat browser. Tampilannya menyesuaikan ukuran layar.</div></details>
+      <details><summary>Apakah bisa scan barcode?<span class="pm" aria-hidden="true"><svg class="ico" style="width:16px;height:16px"><use href="#i-plus"/></svg></span></summary><div class="ans">Bisa. Barcode produk bisa di-scan pakai kamera HP atau alat scanner barcode.</div></details>
+      <details><summary>Apakah daftar produk bisa diekspor?<span class="pm" aria-hidden="true"><svg class="ico" style="width:16px;height:16px"><use href="#i-plus"/></svg></span></summary><div class="ans">Bisa. Ekspor semua produk atau pilih produk tertentu ke file Excel. Anda bisa memilih ikut menyertakan foto produk atau hanya datanya saja.</div></details>
       <details><summary>Apakah bisa mengatur hak akses karyawan?<span class="pm" aria-hidden="true"><svg class="ico" style="width:16px;height:16px"><use href="#i-plus"/></svg></span></summary><div class="ans">Bisa. Anda menentukan fitur apa saja yang boleh dibuka tiap karyawan, misalnya kasir hanya bisa transaksi tanpa melihat laporan.</div></details>
       <details><summary>Bagaimana cara mulai menggunakan KasirBosku?<span class="pm" aria-hidden="true"><svg class="ico" style="width:16px;height:16px"><use href="#i-plus"/></svg></span></summary><div class="ans">Chat kami lewat WhatsApp untuk mengaktifkan trial. Setelah akun siap, buka app.kasirbosku.my.id, masukkan produk, lalu tambahkan karyawan. Kasir sudah bisa dipakai.</div></details>
       <details><summary>Apakah tersedia trial gratis?<span class="pm" aria-hidden="true"><svg class="ico" style="width:16px;height:16px"><use href="#i-plus"/></svg></span></summary><div class="ans">Ada. Semua fitur bisa dicoba gratis selama 7 hari. Aktifkan lewat WhatsApp dengan tombol "Coba Gratis 7 Hari". Setelah itu, pilih paket Bulanan Rp25.000 atau Tahunan Rp199.000.</div></details>
